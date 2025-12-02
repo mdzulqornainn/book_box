@@ -1,69 +1,55 @@
-Berikut contoh **README.md** yang bisa kamu gunakan untuk GitHub. Sudah disesuaikan dengan konteks **mini project Sistem Perpustakaan**, dibuat dengan **Python**, untuk mata kuliah **Dasar Pemrograman Algoritma**, dan dikerjakan oleh **tiga orang**.
-
-Kamu bisa menyalin dan mengedit nama, fitur, atau deskripsi sesuai kebutuhan.
-
----
-
 # 📚 Mini Project — Sistem Perpustakaan Mini
 
-**Mata Kuliah:** Dasar Pemrograman Algoritma
-**Bahasa Pemrograman:** Python
+Proyek ini dibuat untuk memenuhi tugas mata kuliah **Dasar Pemrograman Algoritma**, dan disusun oleh tiga mahasiswa yang sedang belajar membangun program sederhana menggunakan **Python**.
+
+---
 
 ## 👥 Anggota Kelompok
 
-1. **Nama Anggota 1** — NIM
-2. **Nama Anggota 2** — NIM
-3. **Nama Anggota 3** — NIM
+* **Nama Anggota 1** — NIM
+* **Nama Anggota 2** — NIM
+* **Nama Anggota 3** — NIM
 
 ---
 
-## 📖 Deskripsi Proyek
+## 📖 Tentang Proyek Ini
 
-Mini project ini merupakan implementasi dasar dari **Sistem Perpustakaan Mini** menggunakan bahasa pemrograman **Python**.
-Program dibuat untuk memenuhi tugas akhir mata kuliah **Dasar Pemrograman Algoritma** dan bertujuan untuk melatih logika, struktur kontrol, serta pengelolaan data sederhana.
+Ini adalah mini project berupa **Sistem Perpustakaan Mini**.
+Tujuannya sederhana: membuat program yang bisa membantu mengelola data buku dengan fitur dasar seperti menambah, mencari, meminjam, dan menampilkan buku.
 
-Sistem ini memungkinkan pengguna untuk melakukan pengelolaan data buku seperti menambahkan buku, menampilkan daftar buku, meminjamkan buku, mengembalikan buku, dan mencari buku.
-
----
-
-## ✨ Fitur Utama
-
-* ➕ **Menambah Buku**
-  Pengguna dapat menambahkan data buku baru (judul, penulis, tahun, kategori).
-
-* 📚 **Menampilkan Daftar Buku**
-  Menampilkan seluruh buku yang tersimpan dalam perpustakaan.
-
-* 🔍 **Mencari Buku**
-  Pencarian berdasarkan judul atau penulis.
-
-* 📖 **Meminjam Buku**
-  Mengubah status buku menjadi “dipinjam”.
-
-* 🔄 **Mengembalikan Buku**
-  Mengubah status buku kembali menjadi “tersedia”.
-
-* ❌ **Menghapus Buku**
-  Menghapus buku tertentu dari daftar (opsional).
+Proyek ini dibuat untuk melatih dasar-dasar logika pemrograman, penggunaan list/dictionary, kontrol alur, dan fungsi dalam Python. Meski sederhana, program ini sudah cukup untuk menggambarkan alur kerja sebuah perpustakaan digital versi mini.
 
 ---
 
-## 🧩 Struktur Program
+## ✨ Apa Saja yang Bisa Dilakukan Program Ini?
 
-Program menggunakan konsep dasar seperti:
+* ✏️ **Tambah Buku** – Menambahkan buku baru ke daftar.
+* 📚 **Lihat Semua Buku** – Menampilkan semua buku yang tersedia.
+* 🔍 **Cari Buku** – Mencari buku berdasarkan judul atau penulis.
+* 📖 **Pinjam Buku** – Mengubah status buku menjadi “dipinjam”.
+* 🔄 **Kembalikan Buku** – Mengubah status buku menjadi “tersedia” lagi.
+* 🗑️ **Hapus Buku** (opsional) – Menghapus buku tertentu dari daftar.
 
-* Variabel & tipe data
+---
+
+## 🧩 Konsep yang Digunakan
+
+Program ini memanfaatkan beberapa materi dasar seperti:
+
+* Variabel dan tipe data
 * List / dictionary
 * Percabangan (if–else)
 * Perulangan (for / while)
 * Fungsi
 
+Cocok sebagai latihan untuk memahami alur program yang lebih terstruktur.
+
 ---
 
-## ▶️ Cara Menjalankan Program
+## ▶️ Cara Menjalankannya
 
-1. Pastikan sudah menginstal **Python 3.x**
-2. Clone repository:
+1. Pastikan Python 3.x sudah terinstal.
+2. Clone repository ini:
 
    ```bash
    git clone https://github.com/username/repo-perpustakaan-mini.git
@@ -87,15 +73,9 @@ Program menggunakan konsep dasar seperti:
 📁 perpustakaan-mini
 │── perpustakaan.py        # Program utama
 │── data.txt (opsional)    # Penyimpanan data buku
-└── README.md              # Dokumentasi
+└── README.md              # Dokumentasi project
 ```
 
----
 
-## 📝 Catatan
 
-* Program masih menggunakan penyimpanan sederhana (in-memory / file txt).
-* Dapat dikembangkan lebih lanjut menggunakan database atau antarmuka GUI.
-
----
-
+Kalau kamu mau, aku bisa bantu **buatkan logo kecil**, **banner untuk README**, atau **contoh GIF penggunaan program** juga.
