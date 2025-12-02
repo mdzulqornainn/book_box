@@ -6,9 +6,12 @@ Proyek ini dibuat untuk memenuhi tugas mata kuliah **Dasar Pemrograman Algoritma
 
 ## 👥 Anggota Kelompok
 
-* **Nama Anggota 1** — NIM
-* **Nama Anggota 2** — NIM
-* **Nama Anggota 3** — NIM
+
+* **MUHAMMAD DZULQORNAIN**		— 2517052047
+* **ISNI ABRIANTI**			   — 2517052039
+* **ALDI WINSON SIHOTANG**		— 2557052004
+
+
 
 ---
 
