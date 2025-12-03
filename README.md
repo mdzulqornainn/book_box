@@ -55,7 +55,7 @@ Cocok sebagai latihan untuk memahami alur program yang lebih terstruktur.
 2. Clone repository ini:
 
    ```bash
-   git clone [https://github.com/mdzulqornainn/book_box.git]
+   git clone https://github.com/mdzulqornainn/book_box.git
    ```
 3. Masuk ke folder proyek:
 
@@ -74,7 +74,7 @@ Cocok sebagai latihan untuk memahami alur program yang lebih terstruktur.
 
 ```
 📁 perpustakaan-mini
-│── main.py        # Program utama
+│── main.py                # Program utama
 │── data.txt (opsional)    # Penyimpanan data buku
 └── README.md              # Dokumentasi project
 ```
