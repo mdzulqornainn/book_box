@@ -55,17 +55,17 @@ Cocok sebagai latihan untuk memahami alur program yang lebih terstruktur.
 2. Clone repository ini:
 
    ```bash
-   git clone https://github.com/username/repo-perpustakaan-mini.git
+   git clone [https://github.com/mdzulqornainn/book_box.git]
    ```
 3. Masuk ke folder proyek:
 
    ```bash
-   cd repo-perpustakaan-mini
+   cd boox-box
    ```
 4. Jalankan program:
 
    ```bash
-   python perpustakaan.py
+   python main.py
    ```
 
 ---
@@ -74,11 +74,9 @@ Cocok sebagai latihan untuk memahami alur program yang lebih terstruktur.
 
 ```
 📁 perpustakaan-mini
-│── perpustakaan.py        # Program utama
+│── main.py        # Program utama
 │── data.txt (opsional)    # Penyimpanan data buku
 └── README.md              # Dokumentasi project
 ```
 
 
-
-Kalau kamu mau, aku bisa bantu **buatkan logo kecil**, **banner untuk README**, atau **contoh GIF penggunaan program** juga.
