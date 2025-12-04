@@ -26,12 +26,29 @@ def simpan_data():
             baris = f"{buku['id']}|{buku['judul']}|{buku['penulis']}|{buku['tahun']}|{buku['status']}\n"
             f.write(baris)
 
+# fungsi tambah buku
 def tambah_buku():
     judul = input("Masukkan judul buku: ")
     penulis = input("Masukkan penulis buku: ")
     tahun = input("Masukkan tahun terbit: ")
 
+    for buku in perpustakaan:
+        if buku["judul"].lower() == judul.lower() and buku["penulis"].lower() == penulis.lower():
+            print("❌ Buku tersebut sudah ada (duplikat).")
+            return
+
+    # ============================
+    #   Generate ID langsung disini
+    # ============================
+    if not perpustakaan:
+        id_baru = "B001"
+    else:
+        last_id = perpustakaan[-1]["id"]
+        angka = int(last_id[1:]) + 1       
+        id_baru = f"B{angka:03d}"   
+
     buku = {
+        "id": id_baru,
         "judul": judul,
         "penulis": penulis,
         "tahun": tahun,
@@ -39,19 +56,22 @@ def tambah_buku():
     }
 
     perpustakaan.append(buku)
-    # simpan_data()
+    simpan_data()
     print("\n Buku berhasil ditambahkan.")
 
 # menampilkan seluruh buku
 def tampilkan_buku():
-    print("\n=== DAFTAR SEMUA BUKU ===")
-    print(f"{'No':<4} {'Judul Buku':<30} {'Penulis':<20} {'Tahun':<6} {'Status':<10}")
-    print("-" * 80)
+    if perpustakaan == []:
+        print("❗ Belum ada data buku.")
+        return  
+    else:
+        print("\n=== DAFTAR SEMUA BUKU ===")
+        print(f"{'No':<4} {'ID':<5} {'Judul Buku':<30} {'Penulis':<20} {'Tahun':<6} {'Status':<10}")
+        print("-" * 80)
 
-    i = 1 
-    for buku in data_buku:
-        print(f"{i:<4} {buku['judul']:<30} {buku['penulis']:<20} {buku['tahun']:<6} {buku['status']:<10}")
-        i += 1
+        for i, buku in enumerate(perpustakaan):
+            print(f"{i+1:<4} {buku['id']:<5} {buku['judul']:<30}  {buku['penulis']:<20} {buku['tahun']:<6} {buku['status']:<10}")
+            i += 1
 
 
 # fungsi cari buku
@@ -67,5 +87,6 @@ def cari_buku():
     else:
         print("\n❗ Buku tidak ditemukan.")
 
-tambah_buku()
+# tambah_buku()
 tampilkan_buku()
+print(perpustakaan)
