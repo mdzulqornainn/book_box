@@ -87,6 +87,25 @@ def cari_buku():
     else:
         print("\n❗ Buku tidak ditemukan.")
 
-# tambah_buku()
+# Pinjam buku
+def pinjam_buku():
+    tampilkan_buku()
+    if len (perpustakaan) == 0:
+        return
+
+    pilih = int(input("nomor buku yang ingin dipinjamkan:"))
+    
+    if 1 <= pilih <= len(perpustakaan):
+        buku = perpustakaan[pilih -1]
+        if buku['status']== "Dipinjam":
+            print("buku ini sedang dipinjam.\n")
+        else:
+            buku['status']= "dipinjam"
+            simpan_data()
+            print("buku berhasil dipinjam!\n")
+    else:
+        print("pilihan tidak valid.\n")
+# kembalikan buku
+tambah_buku()
+pinjam_buku()
 tampilkan_buku()
-print(perpustakaan)
