@@ -78,7 +78,7 @@ def tampilkan_buku():
 def cari_buku():
     print("\n=== CARI BUKU ===")
     keyword = input("Masukkan judul atau penulis: ").strip().lower()
-    hasil = [buku for buku in data_buku if keyword in buku["judul"].lower() or keyword in buku["penulis"].lower()]
+    hasil = [buku for buku in buku if keyword in buku["judul"].lower() or keyword in buku["penulis"].lower()]
     if hasil:
         print(f"\n{'Judul Buku':<30} {'Penulis':<20} {'Tahun':<6}")
         print("-" * 60)
@@ -106,6 +106,35 @@ def pinjam_buku():
     else:
         print("pilihan tidak valid.\n")
 # kembalikan buku
-tambah_buku()
-pinjam_buku()
-tampilkan_buku()
+
+#menu
+def menu():
+    while True:
+        print("\n========== SISTEM PERPUSTAKAAN MINI ==========")
+        print("1. Tambah Buku")
+        print("2. Hapus Buku")
+        print("3. Tampilkan Buku")
+        print("4. Cari Buku")
+        print("5. Pinjam Buku")
+        print("6. Kembalikan Buku")
+        print("7. Exit")
+
+        pilihan = input("Pilih Menu (1-7): ")
+
+        if pilihan == "1":
+            tambah_buku()
+        # elif pilihan == "2":
+        #     hapus_buku()
+        elif pilihan == "3":
+            tampilkan_buku()
+        elif pilihan == "4":
+            cari_buku()
+        elif pilihan == "5":
+            pinjam_buku()
+        # elif pilihan == "6":
+        #     kembalikan_buku()
+        elif pilihan == "7":
+            print("/nTerimakasih, program selesai")
+            break
+        else:
+            print("/n Pilihan tidak valid")
