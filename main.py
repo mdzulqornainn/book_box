@@ -59,6 +59,23 @@ def tambah_buku():
     simpan_data()
     print("\n Buku berhasil ditambahkan.")
 
+
+# menghapus buku
+def hapus_buku():
+    tampilkan_buku()
+    if len(perpustakaan) == 0:
+        return
+
+    pilih = int(input("Nomor buku yang ingin dihapus: "))
+
+    if 1 <= pilih <= len(perpustakaan):
+        buku = perpustakaan.pop(pilih - 1)
+        simpan_data()
+        print(f"✔ Buku '{buku['judul']}' berhasil dihapus.\n")
+    else:
+        print("❌ Pilihan tidak valid.\n")
+
+
 # menampilkan seluruh buku
 def tampilkan_buku():
     if perpustakaan == []:
@@ -78,7 +95,7 @@ def tampilkan_buku():
 def cari_buku():
     print("\n=== CARI BUKU ===")
     keyword = input("Masukkan judul atau penulis: ").strip().lower()
-    hasil = [buku for buku in buku if keyword in buku["judul"].lower() or keyword in buku["penulis"].lower()]
+    hasil = [buku for buku in perpustakaan if keyword in buku["judul"].lower() or keyword in buku["penulis"].lower()]
     if hasil:
         print(f"\n{'Judul Buku':<30} {'Penulis':<20} {'Tahun':<6}")
         print("-" * 60)
@@ -86,6 +103,7 @@ def cari_buku():
             print(f"{buku['judul']:<30} {buku['penulis']:<20} {buku['tahun']:<6}")
     else:
         print("\n❗ Buku tidak ditemukan.")
+
 
 # Pinjam buku
 def pinjam_buku():
@@ -105,7 +123,26 @@ def pinjam_buku():
             print("buku berhasil dipinjam!\n")
     else:
         print("pilihan tidak valid.\n")
+
+        
 # kembalikan buku
+def kembalikan_buku():
+    tampilkan_buku()
+    if len(perpustakaan) == 0:
+        return
+
+    pilih = int(input("Nomor buku yang ingin dikembalikan: "))
+
+    if 1 <= pilih <= len(perpustakaan):
+        buku = perpustakaan[pilih - 1]
+        if buku["status"].lower() == "tersedia":
+            print("❌ Buku ini belum dipinjam.\n")
+        else:
+            buku["status"] = "Tersedia"
+            simpan_data()
+            print("✔ Buku berhasil dikembalikan!\n")
+    else:
+        print("❌ Pilihan tidak valid.\n")
 
 #menu
 def menu():
@@ -123,18 +160,21 @@ def menu():
 
         if pilihan == "1":
             tambah_buku()
-        # elif pilihan == "2":
-        #     hapus_buku()
+        elif pilihan == "2":
+            hapus_buku()
         elif pilihan == "3":
             tampilkan_buku()
         elif pilihan == "4":
             cari_buku()
         elif pilihan == "5":
             pinjam_buku()
-        # elif pilihan == "6":
-        #     kembalikan_buku()
+        elif pilihan == "6":
+            kembalikan_buku()
         elif pilihan == "7":
-            print("/nTerimakasih, program selesai")
+            print("Terimakasih, program selesai")
             break
         else:
-            print("/n Pilihan tidak valid")
+            print("Pilihan tidak valid")
+
+muat_data()
+menu()
