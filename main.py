@@ -26,6 +26,8 @@ def simpan_data():
             baris = f"{buku['id']}|{buku['judul']}|{buku['penulis']}|{buku['tahun']}|{buku['status']}\n"
             f.write(baris)
 
+
+
 # fungsi tambah buku
 def tambah_buku():
     judul = input("Masukkan judul buku: ")
@@ -34,8 +36,27 @@ def tambah_buku():
 
     for buku in perpustakaan:
         if buku["judul"].lower() == judul.lower() and buku["penulis"].lower() == penulis.lower():
-            print("❌ Buku tersebut sudah ada (duplikat).")
-            return
+            print("Buku tersebut sudah ada (duplikat).")
+            konfirmasi = input("apakah buku masih ingin dimasukkan? ketik 'Ya' untuk konfirmasi 'Tidak' untuk skip :")
+            if konfirmasi == "Ya":
+                if not perpustakaan:
+                    id_baru = "B001"
+                else:
+                    last_id = perpustakaan[-1]["id"]
+                    angka = int(last_id[1:]) + 1       
+                    id_baru = f"B{angka:03d}" 
+
+                buku = {
+                    "id": id_baru,
+                    "judul": judul,
+                    "penulis": penulis,
+                    "tahun": tahun,
+                    "status": "Tersedia"
+                }
+
+                perpustakaan.append(buku)
+                simpan_data()
+                break
 
     # ============================
     #   Generate ID langsung disini
@@ -62,7 +83,7 @@ def tambah_buku():
 # menampilkan seluruh buku
 def tampilkan_buku():
     if perpustakaan == []:
-        print("❗ Belum ada data buku.")
+        print("Belum ada data buku.")
         return  
     else:
         print("\n=== DAFTAR SEMUA BUKU ===")
@@ -85,30 +106,44 @@ def cari_buku():
         for buku in hasil:
             print(f"{buku['judul']:<30} {buku['penulis']:<20} {buku['tahun']:<6}")
     else:
-        print("\n❗ Buku tidak ditemukan.")
+        print("\nBuku tidak ditemukan.")
 
 # Pinjam buku
 def pinjam_buku():
-    tampilkan_buku()
-    if len (perpustakaan) == 0:
-        return
+    print("\n=== PINJAM BUKU ===")
+    id_buku = input("Masukkan ID buku yang ingin dipinjam: ").strip()
+    for buku in perpustakaan:
+        if buku["id"] == id_buku:
+            if buku["status"] == "Tersedia":
+                buku["status"] = "Dipinjam"
+                simpan_data()
+                print(f"\nBuku '{buku['judul']}' berhasil dipinjam.")
+                return
+            else:
+                print("\nBuku sedang tidak tersedia untuk dipinjam.")
+                return
+    print("\nBuku dengan ID tersebut tidak ditemukan.")
 
-    pilih = int(input("nomor buku yang ingin dipinjamkan:"))
-    
-    if 1 <= pilih <= len(perpustakaan):
-        buku = perpustakaan[pilih -1]
-        if buku['status']== "Dipinjam":
-            print("buku ini sedang dipinjam.\n")
-        else:
-            buku['status']= "dipinjam"
-            simpan_data()
-            print("buku berhasil dipinjam!\n")
-    else:
-        print("pilihan tidak valid.\n")
 # kembalikan buku
+def kembalikan_buku():
+    print("\n=== KEMBALIKAN BUKU ===")
+    id_buku = input("Masukkan ID buku yang ingin dikembalikan: ").strip()
+    for buku in perpustakaan:
+        if buku["id"] == id_buku:
+            if buku["status"] == "Dipinjam":
+                buku["status"] = "Tersedia"
+                simpan_data()
+                print(f"\nBuku '{buku['judul']}' berhasil dikembalikan.")
+                return
+            else:
+                print("\nBuku tersebut tidak sedang dipinjam.")
+                return
+    print("\nBuku dengan ID tersebut tidak ditemukan.")
 
 #menu
 def menu():
+    muat_data()
+
     while True:
         print("\n========== SISTEM PERPUSTAKAAN MINI ==========")
         print("1. Tambah Buku")
@@ -131,10 +166,12 @@ def menu():
             cari_buku()
         elif pilihan == "5":
             pinjam_buku()
-        # elif pilihan == "6":
-        #     kembalikan_buku()
+        elif pilihan == "6":
+            kembalikan_buku()
         elif pilihan == "7":
             print("/nTerimakasih, program selesai")
             break
         else:
             print("/n Pilihan tidak valid")
+
+menu()
