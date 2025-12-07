@@ -81,21 +81,17 @@ def tambah_buku():
     print("\n Buku berhasil ditambahkan.")
 
 
-# menghapus buku
 def hapus_buku():
-    tampilkan_buku()
-    if len(perpustakaan) == 0:
-        return
+    print("\n=== Hapus Buku ===")
+    id_buku = input("Masukkan ID buku: ").strip()
 
-    pilih = int(input("Nomor buku yang ingin dihapus: "))
+    for buku in perpustakaan:
+        if buku["id"] == id_buku:
+            perpustakaan.remove(buku)
+            print("Buku berhasil dihapus.")
+            return
 
-    if 1 <= pilih <= len(perpustakaan):
-        buku = perpustakaan.pop(pilih - 1)
-        simpan_data()
-        print(f"✔ Buku '{buku['judul']}' berhasil dihapus.\n")
-    else:
-        print("❌ Pilihan tidak valid.\n")
-
+    print("ID buku tidak ditemukan.")
 
 # menampilkan seluruh buku
 def tampilkan_buku():
@@ -128,23 +124,35 @@ def cari_buku():
 
 # Pinjam buku
 def pinjam_buku():
-    tampilkan_buku()
-    if len (perpustakaan) == 0:
-        return
+    print("\n=== PINJAM BUKU ===")
+    id_buku = input("Masukkan ID buku yang ingin dipinjam: ").strip()
+    for buku in perpustakaan:
+        if buku["id"] == id_buku:
+            if buku["status"] == "Tersedia":
+                buku["status"] = "Dipinjam"
+                simpan_data()
+                print(f"\nBuku '{buku['judul']}' berhasil dipinjam.")
+                return
+            else:
+                print("\nBuku sedang tidak tersedia untuk dipinjam.")
+                return
+    print("\nBuku dengan ID tersebut tidak ditemukan.")
 
-    pilih = int(input("nomor buku yang ingin dipinjamkan:"))
-    
-    if 1 <= pilih <= len(perpustakaan):
-        buku = perpustakaan[pilih -1]
-        if buku['status']== "Dipinjam":
-            print("buku ini sedang dipinjam.\n")
-        else:
-            buku['status']= "dipinjam"
-            simpan_data()
-            print("buku berhasil dipinjam!\n")
-    else:
-        print("pilihan tidak valid.\n")
 # kembalikan buku
+def kembalikan_buku():
+    print("\n=== KEMBALIKAN BUKU ===")
+    id_buku = input("Masukkan ID buku yang ingin dikembalikan: ").strip()
+    for buku in perpustakaan:
+        if buku["id"] == id_buku:
+            if buku["status"] == "Dipinjam":
+                buku["status"] = "Tersedia"
+                simpan_data()
+                print(f"\nBuku '{buku['judul']}' berhasil dikembalikan.")
+                return
+            else:
+                print("\nBuku tersebut tidak sedang dipinjam.")
+                return
+    print("\nBuku dengan ID tersebut tidak ditemukan.")
 
 #menu
 def menu():
@@ -180,7 +188,6 @@ def menu():
         else:
             print("Pilihan tidak valid")
 
-muat_data()
-menu()
+
 
 menu()
