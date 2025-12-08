@@ -57,6 +57,9 @@ def tambah_buku():
                 perpustakaan.append(buku)
                 simpan_data()
                 break
+            elif konfirmasi == "Tidak":
+                print("Buku Tidak Ditambahkan")       
+                return
 
 
     #   Generate ID 
