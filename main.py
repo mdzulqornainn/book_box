@@ -16,7 +16,7 @@ def muat_data():
                     }
                     perpustakaan.append(buku)
     except FileNotFoundError:
-        # Jika file belum ada → buat file kosong
+        # Jika file belum ada maka buat file kosong
         open("data.txt", "w").close()
 
 # simpan data buku ke dalam data.txt
@@ -58,9 +58,8 @@ def tambah_buku():
                 simpan_data()
                 break
 
-    # ============================
-    #   Generate ID langsung disini
-    # ============================
+
+    #   Generate ID 
     if not perpustakaan:
         id_baru = "B001"
     else:
